@@ -1,0 +1,104 @@
+<h1>Results</h1>
+
+<div id="resultsContainer">
+  <section id="scoresContainer">
+    <div class="currentScore">
+      <h2>Current Score:</h2>
+      <h2>{{ correct }}/10</h2>
+      <button>High Scores</button>
+    </div>
+  </section>
+  <form #form="ngForm" (ngSubmit)="submitQuiz(form)">
+    <ol>
+      <div class="questionGroup" *ngFor="let question of questions; index as i">
+        <h3>{{ question.question_name }}</h3>
+        <li>
+          <div class="choice">
+            <label
+              for="{{ question.choice_1 }}"
+              [ngClass]="{
+                incorrect:
+                  question.choice_1 === submittedAnswers[i] &&
+                  submittedAnswers[i] !== question.answer,
+                correct: question.choice_1 === question.answer
+              }"
+            >
+              <input
+                type="radio"
+                id="{{ question.choice_1 }}"
+                name="{{ i }}"
+                value="{{ question.choice_1 }}"
+                [(ngModel)]="submittedAnswers[i]"
+                disabled
+              />
+              {{ question.choice_1 }}
+            </label>
+          </div>
+          <div class="choice">
+            <label
+              for="{{ question.choice_2 }}"
+              [ngClass]="{
+                incorrect:
+                  question.choice_2 === submittedAnswers[i] &&
+                  submittedAnswers[i] !== question.answer,
+                correct: question.choice_2 === question.answer
+              }"
+            >
+              <input
+                type="radio"
+                id="{{ question.choice_2 }}"
+                name="{{ i }}"
+                value="{{ question.choice_2 }}"
+                [(ngModel)]="submittedAnswers[i]"
+                disabled
+              />
+              {{ question.choice_2 }}
+            </label>
+          </div>
+          <div class="choice">
+            <label
+              for="{{ question.choice_3 }}"
+              [ngClass]="{
+                incorrect:
+                  question.choice_3 === submittedAnswers[i] &&
+                  submittedAnswers[i] !== question.answer,
+                correct: question.choice_3 === question.answer
+              }"
+            >
+              <input
+                type="radio"
+                id="{{ question.choice_3 }}"
+                name="{{ i }}"
+                value="{{ question.choice_3 }}"
+                [(ngModel)]="submittedAnswers[i]"
+                disabled
+              />
+              {{ question.choice_3 }}
+            </label>
+          </div>
+          <div class="choice">
+            <label
+              for="{{ question.choice_4 }}"
+              [ngClass]="{
+                incorrect:
+                  question.choice_4 === submittedAnswers[i] &&
+                  submittedAnswers[i] !== question.answer,
+                correct: question.choice_4 === question.answer
+              }"
+            >
+              <input
+                type="radio"
+                id="{{ question.choice_4 }}"
+                name="{{ i }}"
+                value="{{ question.choice_4 }}"
+                [(ngModel)]="submittedAnswers[i]"
+                disabled
+              />
+              {{ question.choice_4 }}
+            </label>
+          </div>
+        </li>
+      </div>
+    </ol>
+  </form>
+</div>
